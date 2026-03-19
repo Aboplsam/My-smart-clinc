@@ -1,0 +1,45 @@
+import React, { useState } from 'react';
+
+export default function SmartClinic() {
+  const [page, setPage] = useState('login'); // التنقل بين الصفحات
+
+  // شاشة الدخول
+  if (page === 'login') return (
+    <div className="flex h-screen items-center justify-center bg-blue-600 p-6" dir="rtl">
+      <div className="bg-white p-8 rounded-2xl w-full shadow-2xl">
+        <h1 className="text-2xl font-bold text-center text-blue-700 mb-6">عيادتي الذكية 🏥</h1>
+        <input className="w-full border p-3 rounded mb-4" placeholder="اسم المستخدم" />
+        <input className="w-full border p-3 rounded mb-6" type="password" placeholder="كلمة المرور" />
+        <button onClick={() => setPage('dashboard')} className="w-full bg-blue-600 text-white p-3 rounded-lg font-bold">دخول</button>
+      </div>
+    </div>
+  );
+
+  // لوحة التحكم (الجوال)
+  return (
+    <div className="bg-slate-50 min-h-screen pb-20" dir="rtl">
+      <header className="bg-blue-700 text-white p-5 shadow-lg flex justify-between items-center">
+        <span className="font-bold">لوحة الإدارة</span>
+        <button onClick={() => setPage('login')} className="text-sm bg-blue-500 px-3 py-1 rounded">خروج</button>
+      </header>
+
+      <main className="p-4 grid gap-4">
+        <div className="bg-white p-5 rounded-xl shadow-sm border-r-8 border-green-500">
+          <p className="text-gray-500 text-sm">دخل اليوم</p>
+          <h2 className="text-2xl font-bold">1,250 ريال</h2>
+        </div>
+        <div className="bg-white p-5 rounded-xl shadow-sm border-r-8 border-blue-500">
+          <p className="text-gray-500 text-sm">مرضى بانتظار الكشف</p>
+          <h2 className="text-2xl font-bold">8 مرضى</h2>
+        </div>
+      </main>
+
+      {/* شريط القائمة السفلي للجوال */}
+      <nav className="fixed bottom-0 left-0 right-0 bg-white border-t flex justify-around p-3">
+        <button className="text-blue-600 font-bold">🏠 الرئيسية</button>
+        <button className="text-gray-400">📅 المواعيد</button>
+        <button className="text-gray-400">👤 المرضى</button>
+      </nav>
+    </div>
+  );
+}8
